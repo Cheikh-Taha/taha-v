@@ -10,13 +10,13 @@ const Header = () => {
           <p className="flex flex-col md:flex-row items-center gap-3 font-semibold text-white text-base mb-6 max-w-xl mx-auto">
             Parcourez simplement notre vaste liste de médecins de confiance et prenez rendez-vous en toute simplicité.
           </p>
-          <a href='#speciality' className="bg-white text-blue-500 px-8 py-3 rounded-full font-medium hedden transition-all duration-100 ease-in-out transform hover:bg-gray-200 hover:scale-105" >
+          <a href='#speciality' className="bg-white text-blue-500 px-8 py-3 rounded-full font-medium hedden transition-all duration-100 ease-in-out transform hover:bg-blue-400 hover:text-white hover:border hover:border-white" >
           Réserver en Ligne
           </a>
        </div>
        <div className='md:w-1/2 relative'>
         {/*-----right-----*/}
-        <img className='w-full md:absolute bottom-0 h-auto rounded-lg' src={assets.doc1}/>
+        <img className='flex  w-full  bottom-0 rounded-lg' src={assets.doc1}/>
 
        </div>
       

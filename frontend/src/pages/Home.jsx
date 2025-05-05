@@ -3,7 +3,6 @@ import Header from '../components/Header'
 import ChatBot from '../components/ChatBot'
 import Smenu from '../components/Smenu'
 import TopDoctors from '../components/TopDoctors'
-import Banner from '../components/Banner'
 
 const Home = () => {
   return (
@@ -12,7 +11,6 @@ const Home = () => {
       <ChatBot/>
       <Smenu/>
       <TopDoctors/>
-      <Banner/>
     </div>
     
     
