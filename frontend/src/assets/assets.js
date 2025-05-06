@@ -301,20 +301,4 @@ export const doctors = [
             line2: 'Circle, Ring Road, London'
         }
     },
-    {
-        _id: 'doc16',
-        name: 'Dr. Akram',
-        image: doc14,
-        speciality: 'Gastroenterologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 30,
-        ville:"fes",
-        address: {
-            line1: '37th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
-        }
-    },
-    
 ]
