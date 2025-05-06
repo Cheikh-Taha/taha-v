@@ -24,6 +24,8 @@ const Appointment = () => {
     <div>
       {/*--Information du docteur--*/}
       <p>{docInfo.name}</p>
+      <p>{docInfo.name}</p>
+
       <img src={docInfo.image} alt="" />
     </div>
   )
