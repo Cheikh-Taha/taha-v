@@ -38,6 +38,7 @@ import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
 import chat from './chat.png'
 import chatLogo from './chatLogo.png'
+import signinBackground from './signinBackground.jpg'
 
 
 export const assets = {
@@ -60,7 +61,8 @@ export const assets = {
     razorpay_logo,
     doc1,
     chat,
-    chatLogo
+    chatLogo,
+    signinBackground
 }
 
 export const specialityData = [
