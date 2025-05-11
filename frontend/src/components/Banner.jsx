@@ -7,10 +7,10 @@ const Banner = () => {
     const navigate =useNavigate();
 
   return (
-    <div className='flex bg-blue-400 rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-20 md:mx-10'>
+    <div className='flex text-center  bg-blue-400 rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-20 md:mx-10'>
         {/*------left----*/}
         <div className='flex-1 py-8 sm:py-10 md:py-16 lg:py-24 lg:pl-5'>
-            <div className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white'>
+            <div className='text-4xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white'>
                 <p>Créer un compte<br/>Gratuit et prenez <br />votre premier <br />rondez-vous</p>
             </div>
                 <button onClick={()=>{navigate('/login'); scrollTo(0,0)}} className='bg-white text-sm sm:text-base text-gray-700 px-8 py-3 rounded-full mt-6 hover:scale-110 transition-all '>S'inscrire</button>

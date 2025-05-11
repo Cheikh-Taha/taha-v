@@ -25,7 +25,7 @@ const NavBar = () => {
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to = '/contact'>
-            <li className='py-1'>Contact</li>
+            <li className='py-1'>Chat Ai</li>
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
       </ul>
@@ -33,8 +33,8 @@ const NavBar = () => {
       {
         token  
         ? <div className='flex items-center gap-2 cursor-pointer group relative'>
-          <img className='w-8 rounded-full' src={assets.profile_pic} alt="" />
-          <img className='w-2.5 ' src={assets.dropdown_icon} alt="" />
+          <img className='w-8 rounded-full' src={assets.profile_pic}/>
+          <img className='w-2.5 ' src={assets.dropdown_icon}/>
           <div className='absolute top-0 right-0 pt 14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
             <div className='min-w-48 bg-stone-100 mt-12 rounded flex flex-col gap-4 p-4'>
               <p onClick={()=>navigate("my-profil")} className='hover:text-black cursor-pointer'>My Profile</p>
@@ -46,6 +46,20 @@ const NavBar = () => {
         :<button onClick={()=>navigate("/login")} className='bg-blue-700 text-white px-8 py-3 rounded-full font-medium hedden transition-all duration-100 ease-in-out transform hover:bg-blue-900 hover:scale-105 '>Connexion</button>
 
       }
+      <img onClick={()=>setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} />
+      {/*----------------Mobile Menu------------------ */}
+      <div className={`${ShowMenu ? 'fixed w-full':'h-0 w-0'} md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
+        <div className='flex items-center justify-between px-5 py-6'>
+          <img className='w-50' src={assets.BookDoc} alt="" />
+          <img className='w-9' onClick={()=>setShowMenu(false)} src={assets.cross_icon} alt="" />
+        </div>
+        <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-2xl font-medium'>
+          <NavLink className="py-2 border-b-2 border-amber-500" to='/'  onClick={()=>setShowMenu(false)}>Home</NavLink>
+          <NavLink className="py-2 border-b-2 border-amber-500" to='/doctors' onClick={()=>setShowMenu(false)}>All doctors</NavLink>
+          <NavLink className="py-2 border-b-2 border-amber-500" to='/about' onClick={()=>setShowMenu(false)}>About</NavLink>
+          <NavLink className="py-2 border-b-2 border-amber-500" to='/' onClick={()=>setShowMenu(false)}>Chat Ai</NavLink>
+        </ul>
+      </div>
     </div>  
     </div>
   )
