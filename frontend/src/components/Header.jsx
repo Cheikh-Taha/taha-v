@@ -14,7 +14,7 @@ const Header = () => {
           Réserver en Ligne
           </a>
        </div>
-       <div className='md:w-1/2 relative'>
+       <div className='flex md:w-1/2 relative'>
         {/*-----right-----*/}
         <img className='w-full md:absolute bottom-0 h-auto rounded-lg lg:max-h-130 lg:max-w-130' src={assets.doc1}/>
 
