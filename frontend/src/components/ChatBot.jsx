@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const chatBot = () => {
   return (
-    <div className='flex-col xl:flex flex-row pt-0 pr-0 space-x-60 '>
+    <div className='flex-col xl:flex xl:flex-row pt-0 pr-0 space-x-60 '>
        <div className='md:w-1/2 flex flex-col items-start  gap-4 py-10 '>
          <img className='w-100 pt-20 pl-12 ' src={assets.chatLogo} alt="" />
          <h2 className="text-xl text-center md:text-6xl font-bold pl-2  text-gray-800 mb-2">Aide Instantanée <span className="text-blue-600 pl-25 text-center">Avec AI</span></h2>

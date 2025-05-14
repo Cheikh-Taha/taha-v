@@ -37,7 +37,7 @@ const Login = () => {
                     {
                        state === "Sign Up"
                        && <div><label className='mb-0.5'>Username</label>
-                       <input className='w-full mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' type='text' placeholder="Entrer Username" onChange={(e)=>setName(e.target.name)} required></input>
+                       <input className='w-full mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5' type='text' placeholder="Entrer Username" onChange={(e)=>setName(e.target.name)} required></input>
                       </div>
                     }
                       <label className='mb-0.5'>E-mail</label>
