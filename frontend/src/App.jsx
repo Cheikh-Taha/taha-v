@@ -13,7 +13,7 @@ import Appointment from './pages/Appointment'
 const App = () => {
 
   return (
-    <div className="mx-25 ms : mx [10%]:" >
+    <div className="mx-4 sm:mx-[10%]" >
       <NavBar/>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -25,6 +25,8 @@ const App = () => {
         <Route path='/my-profil' element={<MyProfil />} />
         <Route path='/my-appointment' element={<MyAppointment />} />
         <Route path='/appointment/:docId' element={<Appointment/>}/>
+
+      
 
       </Routes>
     </div>
