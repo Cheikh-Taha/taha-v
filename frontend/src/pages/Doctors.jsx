@@ -29,12 +29,12 @@ const Doctors = () => {
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
         
         <div className='flex-col w-50 gap-4  text-gray-600'>
-          <p onClick={()=>speciality === 'General physician'? navigate('/doctors') : navigate('/doctors/physician')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Médecin généraliste</p>
-          <p onClick={()=>speciality === 'Gynecologist'? navigate('/doctors') : navigate('/doctors/Gynecologist')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Gynécologue</p>
-          <p onClick={()=>speciality === 'Dermatologist'? navigate('/doctors') : navigate('/doctors/Dermatologist')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Dermatologue</p>
-          <p onClick={()=>speciality === 'Pediatricians'? navigate('/doctors') : navigate('/doctors/Pediatricians')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Pédiatres</p>
-          <p onClick={()=>speciality === 'Neurologist'? navigate('/doctors') : navigate('/doctors/Neurologist')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Neurologue</p>
-          <p onClick={()=>speciality === 'Gastroenterologist'? navigate('/doctors') : navigate('/doctors/Gastroenterologist')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Gastro-entérologue</p>
+          <p onClick={()=>speciality === 'Médecine générale'? navigate('/doctors') : navigate('/doctors/Médecine générale')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Médecine générale</p>
+          <p onClick={()=>speciality === 'Chirurgie'? navigate('/doctors') : navigate('/doctors/Chirurgie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Chirurgie</p>
+          <p onClick={()=>speciality === 'Cardiologie'? navigate('/doctors') : navigate('/doctors/Cardiologie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Cardiologie</p>
+          <p onClick={()=>speciality === 'Pédiatrie'? navigate('/doctors') : navigate('/doctors/Pédiatrie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Pédiatrie</p>
+          <p onClick={()=>speciality === 'Gynécologie et obstétrique'? navigate('/doctors') : navigate('/doctors/Gynécologie et obstétrique')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Gynécologie et obstétrique</p>
+          <p onClick={()=>speciality === 'Dermatologie'? navigate('/doctors') : navigate('/doctors/Dermatologie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Dermatologie</p>
   
         </div>
         <div className='w-full grid [grid-template-columns:repeat(auto-fill,_minmax(200px,_1fr))] gap-4 gap-y-6'>

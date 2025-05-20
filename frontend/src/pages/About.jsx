@@ -8,7 +8,40 @@ const About = () => {
      <div className='my-7 flex flex-col md:flex-row gap-12'>
       <img className='w-full md:max-w-[600px]' src={assets.about_image}/>
       <div className='flex flex-row justify-center pt-3'>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur rem dolor mollitia, impedit architecto sint doloribus provident vero rerum beatae dignissimos quas adipisci. Pariatur consequuntur, quisquam nemo iure quasi id?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur rem dolor mollitia, impedit architecto sint doloribus provident vero rerum beatae dignissimos quas adipisci. Pariatur consequuntur, quisquam nemo iure quasi id?</p>
+        <p>Bienvenue sur BookDoc site web – votre solution simple, rapide et sécurisée pour prendre rendez-vous avec un professionnel de santé.
+
+Dans un monde où tout va vite, accéder à des soins de qualité ne devrait pas être compliqué. C’est pourquoi nous avons créé BookDok : pour connecter les patients avec les bons médecins, au bon moment, en quelques clics seulement.
+<br />
+💡 Notre mission
+Simplifier l accès aux soins de santé en permettant aux patients de trouver facilement un médecin de confiance et de prendre rendez-vous en ligne, sans attente ni stress.
+<br/>
+🏥 Nos services:
+<br/>
+Recherche simplifiée de médecins : par spécialité, lieu, disponibilité ou avis.
+<br/>
+Prise de rendez-vous instantanée : 24h/24, 7j/7.
+<br />
+Profils vérifiés : diplômes, expériences et avis authentiques.
+<br />
+👩‍⚕️ À qui s’adresse BookDoc ?
+<br />
+Aux patients qui veulent des soins médicaux accessibles et rapides.
+<br />
+Aux professionnels de santé qui souhaitent gérer leurs rendez-vous plus efficacement.
+<br />
+🤝 Pourquoi nous choisir ?
+<br />
+- Plateforme sécurisée et facile à utiliser
+<br />
+-Large réseau de médecins certifiés
+<br />
+-Avis transparents des patients
+<br />
+-Service client à votre écoute
+<br />
+-Accessible depuis ordinateur, tablette et mobile
+
+</p>
       </div>
      </div>
     </div>
