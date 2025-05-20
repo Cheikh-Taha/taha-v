@@ -11,7 +11,7 @@ const Appointment = () => {
   const[docSlots,setDocSlots] = useState([])
   const[slotIndex,setSlotIndex] = useState(0)
   const[slotTime,setSlotTime] = useState('')
-  const dayOfWeek = ['SUN','MON','TUE','WED','THU','FRE','SAT']
+  const dayOfWeek = ['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI']
 
   const fetchDocInfo = async() => {
     const docInfo = doctors.find(doc => doc._id === docId)
@@ -87,23 +87,23 @@ const Appointment = () => {
           </p>
           <div className='flex items-center gap-2 text-sm mt-1 text-gray-600'>
             {docInfo.degree} - {docInfo.speciality}
-            <button className='px-1 py-1 border text-xs rounded-full '>{docInfo.experience}</button>
+            <button className='px-1 py-1 border text-xs rounded-full '>{docInfo.experience} d'experience</button>
           </div>
           <div>
             <p className='flex items-center gap-1 text-sm font-medium text-gray-900 mt-3'>
-              About <img src={assets.info_icon} alt="" />
+              À propos <img src={assets.info_icon} alt="" />
             </p>
             <p className='text-sm text-gray-500 max-w-[700px] mt-1'>{docInfo.about}</p>
           </div>
           <p className='text-gray-500 font-medium mt-4'>
-            Appointment fee  <span className='text-gray-700'>{currencySymbol}{docInfo.fees}</span>
+            Frais de rendez-vous : <span className='text-gray-700'>{docInfo.fees}{currencySymbol}</span>
           </p>
         </div>
       </div>
       {/*----Booking slots---*/}
 
       <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
-        <p className='px-4 py-2'>Booking slot</p>
+        <p className='px-4 py-2'>Boîte de réservation:</p>
          <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
           {
             docSlots.map((item, index) => (
@@ -123,7 +123,7 @@ const Appointment = () => {
             </p>
           ))}
          </div>
-         <button className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Book an appointment</button>
+         <button className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Prendre rendez-vous</button>
 
       </div>
 
