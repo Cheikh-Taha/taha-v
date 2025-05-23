@@ -19,13 +19,19 @@ const DoctorList = () => {
         {
           doctors.map((item,index)=>(
             <div  className='rounded-xl max-w-56 overflow-hidden cursor-pointer group hover:grayscale-50 hover:brightness-90' key={index}>
-              <img className='bg-amber-200 group-hover:bg-amber-500 transition-all duration-500' src = {item.image}/>  
-              <div className='text-center'>
-                <p className='text-lg font-bold mt-1'>{item.name}</p>
-                <p className='text-gray-600'>{item.speciality}</p>
-                <p className='text-gray-600'>{item.ville}</p>
-                
-              </div>
+             <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white relative" key={index}>
+      <img
+        className="w-full h-80 object-cover"
+        src={item.image} // Replace with actual image path
+        alt="John Ramirez"
+      />
+      <div className="absolute bottom-0 bg-gradient-to-t from-black/70 to-transparent w-full p-4">
+        <h2 className="text-white text-xl font-semibold">{item.name} </h2>
+        <p className="text-white text-sm">{item.speciality} </p>
+        <p className="text-white text-sm">{item.ville} </p>
+
+      </div>
+    </div>
             </div>
           ))
         }
@@ -35,3 +41,4 @@ const DoctorList = () => {
 }
 
 export default DoctorList
+
