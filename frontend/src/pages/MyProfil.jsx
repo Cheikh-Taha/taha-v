@@ -1,18 +1,10 @@
-import React, { useState } from 'react'
-import { assets } from '../assets/assets'
+import React, { useContext, useState } from 'react'
+import { AppContext } from '../context/AppContext';
 
 const MyProfil = () => {
 
-  const [userData , setUserData] = useState({
-    name:"akram bk",
-    image:assets.profile_pic,
-    email:'bokotos@gmail.com',
-    phone:'0626613669',
-    address:'adddsss',
-    gender:'male',
-    dob:'2001-10-12'
+const {userData,setUserData} = useContext(AppContext)
 
-  })
   const [isEdite,setIsEdite] = useState(true);
   return (
     <div className='flex flex-col md:flex-row justify-start'>
