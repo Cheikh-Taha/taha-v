@@ -3,9 +3,10 @@ import { AppContext } from '../context/AppContext';
 
 const MyProfil = () => {
 
-const {userData,setUserData} = useContext(AppContext)
 
-  const [isEdite,setIsEdite] = useState(true);
+const {userData,setUserData}= useContext(AppContext)
+
+  const [isEdite,setIsEdite] = useState(false);
   return (
     <div className='flex flex-col md:flex-row justify-start'>
       <div className='m-auto md:m-3'>
@@ -18,6 +19,7 @@ const {userData,setUserData} = useContext(AppContext)
         <p>User Information :</p>
         <hr className='mb-5'/>
         <p>Username :</p>
+      
         {
         isEdite
         ?<input className='font-bold w-full max-w-70 mb-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ' type='text' value={userData.name} onChange={e =>setUserData(prev =>({...prev,name:e.target.value}))}/>
@@ -32,13 +34,7 @@ const {userData,setUserData} = useContext(AppContext)
             ?<input className='font-bold w-full max-w-70 mb-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ' type='text' value={userData.phone} onChange={e =>setUserData(prev =>({...prev,phone:e.target.value}))}/>
             :<p className='font-bold max-w-70 mb-1 bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 '>{userData.phone}</p>
           }
-          <p>Adresse :</p>
-          {
-            isEdite
-            ?<input  className='font-bold w-full max-w-70 mb-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ' type='text' value={userData.address} onChange={e =>setUserData(prev =>({...prev,address:e.target.value}))}/>
-            
-            :<p className='font-bold max-w-70 mb-1 bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 '>{userData.address}</p>
-          }
+          
           
         </div>
       </div>

@@ -13,7 +13,7 @@ const Login = () => {
 
   const {backEndUrl,token,setToken} = useContext(AppContext)
   const navigate = useNavigate();
-  const [state,setState] = useState('Sign Up');
+  const [state,setState] = useState('Sign in');
 
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
