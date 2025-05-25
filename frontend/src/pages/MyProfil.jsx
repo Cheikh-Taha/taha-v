@@ -1,20 +1,66 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext';
+import { assets } from '../assets/assets'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const MyProfil = () => {
 
 
-const {userData,setUserData}= useContext(AppContext)
+const {userData,setUserData,token,backEndUrl,loudUserProfileData}= useContext(AppContext)
 
-  const [isEdite,setIsEdite] = useState(false);
-  return (
+const [isEdite,setIsEdite] = useState(false);
+const [image,setImage] = useState(false)
+
+const updateUserProfileData = async () => {
+
+    try {
+
+      const formData = new FormData()
+
+      formData.append('name',userData.name)
+      formData.append('phone',userData.phone)
+      formData.append('addresse',userData.addresse)
+      formData.append('gender',userData.gender)
+      formData.append('dob',userData.dob)
+
+      image && formData.append('image',image)
+
+      const {data} = await axios.post(backEndUrl + 'ipa/user/update-profile',formData,{headers:{token}})
+
+      if(data.success){
+        toast.success(data.message)
+        await loudUserProfileData
+        setIsEdite(false)
+        setImage(false)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message)
+    }
+
+}
+
+
+return userData && (
     <div className='flex flex-col md:flex-row justify-start'>
-      <div className='m-auto md:m-3'>
-      <img className='mt-3 mb-3 rounded-full' src={userData.image}/>
-      </div>
+
+      {
+        isEdite
+        ?<label htmlFor="image">
+          <div className='inline-block relative cursor-pointer'>
+            <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image):userData.image} alt="" />
+            <img className='w-10 absolute bottom-12 right-12' src={image ? '':assets.upload_icon} alt="" />
+          </div>
+          <input onChange={(e)=>setImage(e.target.files[0])} type="file" id='image' hidden />
+        </label>
+        :<div className='m-auto md:m-3'>
+        <img className='mt-3 mb-3 rounded-full' src={userData.image}/>
+        </div>
+      }
       <div className='m-auto md:mx-9'>
-      
-      
       <div>
         <p>User Information :</p>
         <hr className='mb-5'/>
@@ -64,7 +110,7 @@ const {userData,setUserData}= useContext(AppContext)
       <div>
         {
           isEdite
-          ? <button className='text-center gap-2 mt-4 bg-white border-blue-400 border-3 text-blue-400 font-bold py-2 px-30 rounded-xl hover:cursor-pointer hover:bg-blue-400 hover:text-white' onClick={()=>setIsEdite(false)}>Save</button>
+          ? <button className='text-center gap-2 mt-4 bg-white border-blue-400 border-3 text-blue-400 font-bold py-2 px-30 rounded-xl hover:cursor-pointer hover:bg-blue-400 hover:text-white' onClick={updateUserProfileData}>Save</button>
           : <button className='text-center gap-2 mt-4 bg-white border-blue-400 border-3 text-blue-400 font-bold py-2 px-30 rounded-xl hover:cursor-pointer hover:bg-blue-400 hover:text-white' onClick={()=>setIsEdite(true)}>Edite</button>
         }
       </div>

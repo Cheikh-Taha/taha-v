@@ -39,7 +39,7 @@ import Pediatricians from './Pediatricians.svg'
 import chat from './chat.png'
 import chatLogo from './chatLogo.png'
 import signinBackground from './signinBackground.jpg'
-import BookDoc from './BookDoc.png'
+import BookDoc from './bookDoc.png'
 
 
 export const assets = {

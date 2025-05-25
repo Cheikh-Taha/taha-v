@@ -5,12 +5,13 @@ import jwt from 'jsonwebtoken'
 const authUser = async (req,res,next)=>{
     try {
 
-        const {token} = req.headers
+        const token = req.headers.token
         if (!token) {
             return res.json({success:false,message:"Not authorized login again "})
         }
         const token_decode = jwt.verify(token,process.env.JWT_SECRET)
-        res.body.userId = token_decode.id 
+        if (!req.body) req.body = {};
+        req.body.userId = token_decode.id;
         next()
 
 

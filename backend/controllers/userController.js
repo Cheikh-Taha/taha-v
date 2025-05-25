@@ -3,6 +3,8 @@ import bycrypt from 'bcrypt'
 import userModel from '../models/userModel.js' 
 import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
+import doctorModel from '../models/doctorModel.js'
+import appointmentModel from '../models/appointmentModel.js'
 
 
 // api to s'inscrire
@@ -112,4 +114,99 @@ const updateProfil = async (req, res) => {
         res.json({ success: false, message: error.message });
     }
 } 
-export {registerUser,getProfil,loginUser,updateProfil}
+
+//API to book an appointment
+const bookAppointment = async(req, res) => {
+    try {
+        const token = req.headers.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.id;
+
+        // Use slotDate, not slotData
+        const { docId, slotDate, slotTime } = req.body;
+        const docData = await doctorModel.findById(docId).select('-password');
+        let slots_booked = docData.slots_booked;
+
+        // Check slot availability
+        if (slots_booked[slotDate]) {
+            if (slots_booked[slotDate].includes(slotTime)) {
+                return res.json({ success: false, message: 'slot not available' });
+            } else {
+                slots_booked[slotDate].push(slotTime);
+            }
+        } else {
+            slots_booked[slotDate] = [];
+            slots_booked[slotDate].push(slotTime);
+        }
+
+        const userData = await userModel.findById(userId).select('-password');
+        delete docData.slots_booked;
+
+        const appointmentData = {
+            userId,
+            docId,
+            userData,
+            docData,
+            amount: docData.fees,
+            slotTime,
+            slotDate, 
+            date: Date.now()
+        };
+
+        const newAppointment = new appointmentModel(appointmentData);
+        await newAppointment.save();
+
+        await doctorModel.findByIdAndUpdate(docId, { slots_booked });
+
+        res.json({ success: true, message: 'Appointment booked' });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+//API to get user appointments for frentent my-appointment page
+const listAppointment = async(req,res) => {
+    try {
+
+        const token = req.headers.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.id;
+
+        const appointments = await appointmentModel.find({userId})
+        res.json({success:true , appointments})
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+// API to cancel an appointment
+const cancelAppointment = async (req, res) => {
+
+    try {
+        const {userId,appointmentId} = req.body
+        const appointmentData = await appointmentModel.findById(appointmentId)
+
+        // Verify if the appointment belongs to the user
+        if (appointmentData.userId !== userId) {
+            return res.json({ success: false, message: "You are not authorized to cancel this appointment" });
+        }
+
+        await appointmentModel.findByIdAndDelete(appointmentId,{cancelled : true});
+        // Releasing the slot
+        const {docId,slotDate,slotTime} = appointmentData
+        const docData = await doctorModel.findById(docId);
+        let slots_booked = docData.slots_booked;
+        slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime);
+
+        await doctorModel.findByIdAndUpdate(docId, { slots_booked });
+        res.json({ success: true, message: "Appointment cancelled successfully" });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+
+}
+
+export {registerUser,getProfil,loginUser,updateProfil,bookAppointment,listAppointment,cancelAppointment}
