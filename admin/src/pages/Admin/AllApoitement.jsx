@@ -7,15 +7,15 @@ import { assets } from '../../assets/assets'
 
 const AllApoitement = () => {
 
-  const {appointments, aToken, getAllAppointment, cancelAppointment} = useContext(AdminContext)
-  const {calculateAge,slotDateFormat,currency} = useContext(AppContext)
+  const { appointments, aToken, getAllAppointment, cancelAppointment } = useContext(AdminContext)
+  const { calculateAge, slotDateFormat, currency } = useContext(AppContext)
 
-  
+
   useEffect(() => {
     if (aToken) {
       getAllAppointment()
     }
-  },[aToken])
+  }, [aToken])
 
   return (
     <div className='w-full max-w-6xl m-5'>
@@ -46,9 +46,9 @@ const AllApoitement = () => {
               <img className='w-10 h-10 rounded-full bg-gray-200' src={item.docData.image} alt="" />
               <p className='text-gray-800'>{item.docData.name}</p>
             </div>
-            <p>{currency}{item.amount}</p>
+            <p>{item.amount}{currency}</p>
             <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
-            
+
           </div>
         ))}
 
