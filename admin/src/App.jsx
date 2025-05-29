@@ -17,7 +17,7 @@ const App = () => {
   return aToken? (
     <div>
       <ToastContainer/>
-      <NavBar/>
+     
       <div className='flex items-start'>
         <SideBare/>
         <Routes>

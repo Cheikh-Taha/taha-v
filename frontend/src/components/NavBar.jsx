@@ -14,24 +14,24 @@ const NavBar = () => {
   const logout = () => {
     setToken(false)
     localStorage.removeItem('token')
-    navigate('/login')
+    navigate('/')
   }
 
 
   return (
-    <div className='flex items-center justify-between text-sm py-2 mb-5 border-b border-b-gray-400'>
+    <div className='flex items-center justify-between text-sm py-2 border-b border-b-gray-400'>
       <img onClick={()=>navigate('/')} className='w-35 cursor-pointer' src={assets.BookDoc} alt="" />
       <ul className='hidden md:flex items-start gap-7 font-medium'>
         <NavLink to='/'>
-            <li className='py-1'>Home</li>
+            <li className='py-1'>Accueil</li>
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to = '/doctors/'>
-            <li className='py-1'>All doctors</li>
+            <li className='py-1'>Médecins</li>
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to = '/about'>
-            <li className='py-1'>About</li>
+            <li className='py-1'>À propos</li>
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to = '/contact'>
@@ -47,9 +47,9 @@ const NavBar = () => {
           <img className='w-2.5 ' src={assets.dropdown_icon}/>
           <div className='absolute top-0 right-0 pt 14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
             <div className='min-w-48 bg-stone-100 mt-12 rounded flex flex-col gap-4 p-4'>
-              <p onClick={()=>navigate("my-profil")} className='hover:text-black cursor-pointer'>My Profile</p>
-              <p onClick={()=>navigate("my-appointment")} className='hover:text-black cursor-pointer'>My Appointments</p>
-              <p onClick={logout} className='hover:text-black cursor-pointer'>Logout</p>           
+              <p onClick={()=>navigate("my-profil")} className='hover:text-black cursor-pointer'>Mon profil</p>
+              <p onClick={()=>navigate("my-appointment")} className='hover:text-black cursor-pointer'>Mes rendez-vous</p>
+              <p onClick={logout} className='hover:text-black cursor-pointer'>Déconnexion</p>           
             </div>
           </div>
         </div>

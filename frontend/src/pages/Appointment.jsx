@@ -117,33 +117,61 @@ const Appointment = () => {
     console.log(docSlots);
   },[docSlots])
 
+
   return docInfo && (
     <div>
       {/*--Information du docteur--*/}
-      <div className='flex flex-col sm:flex-row  gap-4'>
-        <div>
-          <img className='bg-blue-400  w-full sm:max-w-72 rounded-lg' src={docInfo.image} alt="" />
-        </div>
-        <div className='flex-1  border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 '>
-          <p className='flex items-center gap-2 text-2xl font-medium text-gray-900'>
-            {docInfo.name} 
-            <img className='w-5' src={assets.verified_icon} alt="" />
+     <div className=" mx-auto bg-white shadow-lg rounded-xl overflow-hidden p-6">
+      <div className="flex flex-col md:flex-row gap-6 items-center">
+        {/* Doctor Image */}
+        <img
+          src={docInfo.image} // Replace with real image
+          alt="Doctor"
+          className="bg-blue-400  w-full sm:max-w-72 rounded-lg"
+        />
+
+        {/* Doctor Info */}
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold text-gray-800">Dr. Happy Heya</h2>
+          <p className="text-gray-600">spécialité:</p>
+          <p className="text-gray-700 font-medium mb-2">
+            {docInfo.speciality} Specialist
           </p>
-          <div className='flex items-center gap-2 text-sm mt-1 text-gray-600'>
-            {docInfo.degree} - {docInfo.speciality}
-            <button className='px-1 py-1 border text-xs rounded-full '>{docInfo.experience} d'experience</button>
-          </div>
-          <div>
-            <p className='flex items-center gap-1 text-sm font-medium text-gray-900 mt-3'>
-              À propos <img src={assets.info_icon} alt="" />
-            </p>
-            <p className='text-sm text-gray-500 max-w-[700px] mt-1'>{docInfo.about}</p>
-          </div>
-          <p className='text-gray-500 font-medium mt-4'>
-            Frais de rendez-vous : <span className='text-gray-700'>{docInfo.fees}{currencySymbol}</span>
+
+          <p className="text-sm text-gray-500 flex"> À propos &nbsp;<img src={assets.info_icon} alt="" /></p>
+          <p className="text-gray-700 font-medium mb-2">
+            {docInfo.about}
           </p>
+
+          <div className="border-t pt-2 mt-2 text-sm">
+            <span className="font-semibold text-gray-700">Frais de rendez-vous : </span>
+            <span className="text-blue-600 font-semibold">{docInfo.fees}{currencySymbol}</span>{" "}
+          </div>
         </div>
       </div>
+
+      {/* Stats Section */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center text-sm text-gray-600">
+        <div>
+          <p className="font-semibold text-gray-800 text-base">{docInfo.experience} </p>
+          <p>Total Experience</p>
+        </div>
+        
+        <div>
+          <p className="font-semibold text-gray-800 text-base">{docInfo.ville}</p>
+          <p>Ville</p>
+        </div>
+        <div>
+          <p className="font-semibold text-gray-800 text-base">
+            Date De Rejoinement
+          </p>
+          <p> {Date(docInfo.date)} </p>
+        </div>
+      </div>
+
+     
+    </div>
+
       {/*----Booking slots---*/}
 
       <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
@@ -170,7 +198,7 @@ const Appointment = () => {
          <button onClick={bookAppointment} className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Prendre rendez-vous</button>
 
       </div>
-
+      
     </div>
   )
 }

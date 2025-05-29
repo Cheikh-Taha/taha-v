@@ -40,6 +40,7 @@ import chat from './chat.png'
 import chatLogo from './chatLogo.png'
 import signinBackground from './signinBackground.jpg'
 import BookDoc from './bookDoc.png'
+import background from './header_background.jpg'
 
 
 export const assets = {
@@ -64,32 +65,33 @@ export const assets = {
     chat,
     chatLogo,
     signinBackground,
-    BookDoc
+    BookDoc,
+    background
 }
 
 export const specialityData = [
     {
-        speciality: 'General physician',
+        speciality: 'Médecine générale',
         image: General_physician
     },
     {
-        speciality: 'Gynecologist',
+        speciality: 'Chirurgie',
         image: Gynecologist
     },
     {
-        speciality: 'Dermatologist',
+        speciality: 'Cardiologie',
         image: Dermatologist
     },
     {
-        speciality: 'Pediatricians',
+        speciality: 'Pédiatrie',
         image: Pediatricians
     },
     {
-        speciality: 'Neurologist',
+        speciality: 'Gynécologie et obstétrique',
         image: Neurologist
     },
     {
-        speciality: 'Gastroenterologist',
+        speciality: 'Dermatologie',
         image: Gastroenterologist
     },
 ]

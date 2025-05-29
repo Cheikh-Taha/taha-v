@@ -1,27 +1,51 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { AppContext } from '../context/AppContext'
 
 const Header = () => {
+  const navigate =useNavigate();
+  const {backEndUrl,token,setToken} = useContext(AppContext)
+  const [state,setState] = useState('');
+
+  
+
+  
   return (
-    <div className='flex flex-col md:flex-row flex-wrap bg-blue-500 rounded-lg px-6 md:px-10 lg:px-20'>
-        {/*----left----*/}
-       <div className='md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[10vw] md:mb-[-30px]'>
-          <h1 className="text-4xl font-bold text-white mb-2 ">Reservation En Ligne <br />Avec Meilleur Doctors</h1>
-          <p className="flex flex-col md:flex-row items-center gap-3 font-semibold text-white text-base mb-6 max-w-xl mx-auto">
-            Parcourez simplement notre vaste liste de médecins de confiance et prenez rendez-vous en toute simplicité.
-          </p>
-          <a href='#speciality' className="bg-white text-blue-500 px-8 py-3 rounded-full font-medium hedden transition-all duration-100 ease-in-out transform hover:bg-gray-200 hover:scale-105" >
-          Réserver en Ligne
-          </a>
-       </div>
-       <div className='flex md:w-1/2 relative'>
-        {/*-----right-----*/}
-        <img className='w-full md:absolute bottom-0 h-auto rounded-lg lg:max-h-130 lg:max-w-130' src={assets.doc1}/>
+       <section
+      className="relative bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-cover bg-center h-screen flex items-center justify-center"
+    >
+       <img
+    src={assets.background} // Dynamic image source
+    alt="Background"
+    className="hidden md:block absolute inset-0 w-full h-full object-cover"
+  />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-20"></div>
 
-       </div>
-      
-
-    </div>
+      {/* Content */}
+      <div className="relative z-10 text-center text-white pt-50 px-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+         Reservation En Ligne <br />Avec Meilleur Doctors
+        </h1>
+        <p className="text-lg mb-6">
+          Parcourez simplement notre vaste liste de médecins de confiance et prenez rendez-vous en toute simplicité.
+        </p>
+        {
+          token ?
+            <button onClick={()=>{navigate('/doctors');window.scrollTo(0,0)}} className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-md transition">
+          CONSULTEZ NOS SERVICES
+        </button>
+           : 
+            <button onClick={()=>{navigate('/login');window.scrollTo(0,0)}} className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-md transition">
+          CONSULTEZ NOS SERVICES
+        </button>
+           
+        }
+        
+      </div>
+    </section>
   )
 }
 

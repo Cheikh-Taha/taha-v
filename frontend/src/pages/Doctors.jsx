@@ -40,15 +40,22 @@ const Doctors = () => {
         <div className='w-full grid [grid-template-columns:repeat(auto-fill,_minmax(200px,_1fr))] gap-4 gap-y-6'>
           {
             filterDoc.map((item,index)=>(
-              <div onClick={()=>navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-200' key={index}>
-                  <img className='bg-blue-100' src={item.image} alt="" />
-                  <div className='p-4'>
-                      <div className='flex items-center text-sm gap-2 text-center text-green-500'>
-                          <p className='w-2 h-2 bg-green-500 rounded-full'></p><p>Available</p>
-                      </div>
-                      <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
-                      <p className='text-gray-600 text-sm'>{item.speciality}</p>
-                  </div>
+              <div onClick={()=>navigate(`/appointment/${item._id}`)} className='overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-200' key={index}>
+                  <div  className='rounded-xl max-w-56 overflow-hidden cursor-pointer group hover:grayscale-50 hover:brightness-90' key={index}>
+             <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white relative" key={index}>
+      <img
+        className="w-full h-80 object-cover"
+        src={item.image} // Replace with actual image path
+        alt="John Ramirez"
+      />
+      <div className="absolute bottom-0 bg-gradient-to-t from-black/70 to-transparent w-full p-4">
+        <h2 className="text-white text-xl font-semibold">{item.name} </h2>
+        <p className="text-white text-sm">{item.speciality} </p>
+        <p className="text-white text-sm">{item.ville} </p>
+
+      </div>
+    </div>
+            </div>
               </div>
           ))
           }
