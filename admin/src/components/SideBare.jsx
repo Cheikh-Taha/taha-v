@@ -3,16 +3,20 @@ import { NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import {AdminContext} from '../context/AdminContext'
 import {useNavigate} from 'react-router-dom'
+import { DoctorContext } from '../context/DoctorContext'
 
 
 
 const SideBare = () => {
   const {aToken,setAToken} = useContext(AdminContext)
+  const {dToken,setDToken} = useContext(DoctorContext)
   
       const logout = ()=>{
           navigate('/')
           aToken && setAToken('')
           aToken && localStorage.removeItem('aToken')
+          dToken && setDToken('')
+          dToken && localStorage.removeItem('dToken')
       }
       const navigate  = useNavigate()
 
@@ -43,6 +47,25 @@ const SideBare = () => {
           <NavLink className={({isActive})=> `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-amber-500':''}`}  to={'/doctor-list'}>
             <img src={assets.people_icon} />
             <p>Liste des médecins</p>
+          </NavLink>
+        </ul>
+      }
+      {/*doctoor side bare */}
+      {
+        dToken && <ul className='text-gray-700 mt-5'>
+          <NavLink className={({isActive})=> `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-amber-500':''}`} to={'/doctor-dashboard'}>
+            <img src={assets.home_icon} />
+            <p>DashBoard</p>
+          </NavLink>
+
+          <NavLink className={({isActive})=> `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-amber-500':''}`}  to={'/doctor-Appointement'}>
+            <img src={assets.appointment_icon} />
+            <p>Rendez-vous</p>
+          </NavLink>
+
+          <NavLink className={({isActive})=> `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-amber-500':''}`}  to={'/doctor-profile'}>
+            <img src={assets.people_icon} />
+            <p>Profile</p>
           </NavLink>
         </ul>
       }

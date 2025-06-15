@@ -26,7 +26,7 @@ const updateUserProfileData = async () => {
 
       image && formData.append('image',image)
 
-      const {data} = await axios.post(backEndUrl + 'ipa/user/update-profile',formData,{headers:{token}})
+      const {data} = await axios.post(backEndUrl + '/api/user/update-profile',formData,{headers:{token}})
 
       if(data.success){
         toast.success(data.message)
