@@ -91,8 +91,14 @@ const getProfil = async (req, res) => {
 const updateProfil = async (req, res) => {
     try {
         
-        const {userId,name,phone,address,dob,gender} = req.body
+        const {name,phone,address,dob,gender} = req.body
         const imageFile = req.file
+        const token = req.headers.token;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+        console.log(`the id is ${userId}`);
+        
         if (!name || !phone || !gender || !dob ) {
             return res.json({ success: false, message: "Data Missing" });
         }

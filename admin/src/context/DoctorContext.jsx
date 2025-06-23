@@ -35,13 +35,50 @@ const DoctorContextProvider = (props)=>{
         }
     }
 
+    const completeAppointment = async (appointmentId) => {
+        try {
+            const {data} = await axios.post(backendUrl + '/api/doctor/complete-appointment',{appointmentId},{headers:{dToken}})
+            if (data.success) {
+                toast.success('Appointment completed successfully')
+                getAppointments() // Refresh appointments after completion
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            console.log(error)
+            toast.error('Something went wrong while completing appointment')
+            
+        }
+
+    }
+     const cancelAppointment = async (appointmentId) => {
+        try {
+            console.log(appointmentId);
+            const {data} = await axios.post(backendUrl + '/api/doctor/cancel-appointment',{appointmentId},{headers:{dToken}})
+            if (data.success) {
+                toast.success('Appointment cancel successfully')
+                getAppointments() // Refresh appointments after completion
+            } else {
+                toast.error(data.message)
+            }
+            
+        } catch (error) {
+            console.log(error)
+            toast.error('Something went wrong while completing appointment')
+            
+        }
+
+    }
+
 
 
     const value = {
         dToken,setDToken,
         backendUrl,
         getAppointments,
-        appointments,setAppointments
+        appointments,setAppointments,
+        completeAppointment,
+        cancelAppointment
     }
 
     return (

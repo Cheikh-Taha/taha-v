@@ -118,6 +118,8 @@ const Appointment = () => {
   },[docSlots])
 
 
+
+
   return docInfo && (
     <div>
       {/*--Information du docteur--*/}
@@ -195,7 +197,13 @@ const Appointment = () => {
             </p>
           ))}
          </div>
-         <button onClick={bookAppointment} className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Prendre rendez-vous</button>
+         {
+          token 
+          ? <button onClick={bookAppointment} className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Prendre rendez-vous</button> 
+          : <button onClick={() => navigate('/login')} className='bg-blue-500 text-white text-sm font-medium px-14 py-3 rounded-full my-6'>Se connecter pour réserver</button>
+
+         }
+
 
       </div>
       

@@ -34,10 +34,7 @@ const NavBar = () => {
             <li className='py-1'>À propos</li>
             <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
         </NavLink>
-        <NavLink to = '/contact'>
-            <li className='py-1'>Chat Ai</li>
-            <hr className='border-none outline-none h-0.5 bg-blue-800 w-3/5 m-auto hidden' />
-        </NavLink>
+       
       </ul>
     <div className='flex items-center gap-4'>
       {
@@ -67,7 +64,6 @@ const NavBar = () => {
           <NavLink className="py-2 border-b-2 border-amber-500" to='/'  onClick={()=>setShowMenu(false)}>Home</NavLink>
           <NavLink className="py-2 border-b-2 border-amber-500" to='/doctors' onClick={()=>setShowMenu(false)}>All doctors</NavLink>
           <NavLink className="py-2 border-b-2 border-amber-500" to='/about' onClick={()=>setShowMenu(false)}>About</NavLink>
-          <NavLink className="py-2 border-b-2 border-amber-500" to='/' onClick={()=>setShowMenu(false)}>Chat Ai</NavLink>
         </ul>
       </div>
     </div>  
