@@ -6,8 +6,8 @@ import { AppContext } from '../../context/AppContext'
 import { assets } from '../../assets/assets'
 
 const DoctorAppointement = () => {
-  const {dToken, getAppointments, appointments , completeAppointment,cancelAppointment} = useContext(DoctorContext)
-  const {calculateAge,slotDateFormat,currency} =  useContext(AppContext)
+  const { dToken, getAppointments, appointments, completeAppointment, cancelAppointment } = useContext(DoctorContext)
+  const { calculateAge, slotDateFormat, currency } = useContext(AppContext)
 
   useEffect(() => {
     if (dToken) {
@@ -26,12 +26,12 @@ const DoctorAppointement = () => {
           <p>Date et Heure</p>
           <p>Frais de rendez-vous</p>
           <p>Action</p>
-          
+
         </div>
         {
-          appointments.map((item,index)=>(
+          appointments.map((item, index) => (
             <div className='pt-2 pb-2 flex flex-wrap justify-between max-sm:gap-5 max-sm:text-base sm:grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr] gap-1 items-center text-gray-500 px-6 border-b hover:bg-gray-50' key={index}>
-              <p className='max-sm:hidden'>{index+1}</p>
+              <p className='max-sm:hidden'>{index + 1}</p>
               <div className='flex items-center gap-2'>
                 <img className='w-9 rounded-full' src={item.userData.image} alt="" />
                 <p>{item.userData.name}</p>
@@ -39,10 +39,18 @@ const DoctorAppointement = () => {
               <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
               <p>{slotDateFormat(item.slotDate)} ,{item.slotTime} </p>
               <p>{item.amount} {currency} </p>
-              <div className='flex'>
-                <img onClick={()=>cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
-                <img onClick={()=>completeAppointment(item._id)} className='w-10 cursor-pointer' src={assets.tick_icon} alt="" />
-              </div>
+              {
+
+                item.cancelled
+                  ? <p>Reservation est annulee</p>
+                  : item.isCompleted
+                    ? <p>Reservation est Complete</p>
+                    : <div className='flex'>
+                      <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+                      <img onClick={() => completeAppointment(item._id)} className='w-10 cursor-pointer' src={assets.tick_icon} alt="" />
+                    </div>
+              }
+
             </div>
           ))
         }
