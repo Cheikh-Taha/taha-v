@@ -75,11 +75,11 @@ export const specialityData = [
         image: General_physician
     },
     {
-        speciality: 'Chirurgie',
+        speciality: 'Gynécologie et obstétrique',
         image: Gynecologist
     },
     {
-        speciality: 'Cardiologie',
+        speciality: 'Dermatologie',
         image: Dermatologist
     },
     {
@@ -87,11 +87,11 @@ export const specialityData = [
         image: Pediatricians
     },
     {
-        speciality: 'Gynécologie et obstétrique',
+        speciality: 'Neurologue',
         image: Neurologist
     },
     {
-        speciality: 'Dermatologie',
+        speciality: 'Gastro-entérologue',
         image: Gastroenterologist
     },
 ]

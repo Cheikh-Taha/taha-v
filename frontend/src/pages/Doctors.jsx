@@ -30,11 +30,11 @@ const Doctors = () => {
         
         <div className='flex-col w-50 gap-4  text-gray-600'>
           <p onClick={()=>speciality === 'Médecine générale'? navigate('/doctors') : navigate('/doctors/Médecine générale')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Médecine générale</p>
-          <p onClick={()=>speciality === 'Chirurgie'? navigate('/doctors') : navigate('/doctors/Chirurgie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Chirurgie</p>
-          <p onClick={()=>speciality === 'Cardiologie'? navigate('/doctors') : navigate('/doctors/Cardiologie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Cardiologie</p>
-          <p onClick={()=>speciality === 'Pédiatrie'? navigate('/doctors') : navigate('/doctors/Pédiatrie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Pédiatrie</p>
           <p onClick={()=>speciality === 'Gynécologie et obstétrique'? navigate('/doctors') : navigate('/doctors/Gynécologie et obstétrique')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Gynécologie et obstétrique</p>
           <p onClick={()=>speciality === 'Dermatologie'? navigate('/doctors') : navigate('/doctors/Dermatologie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Dermatologie</p>
+          <p onClick={()=>speciality === 'Pédiatrie'? navigate('/doctors') : navigate('/doctors/Pédiatrie')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Pédiatrie</p>
+          <p onClick={()=>speciality === 'Neurologue'? navigate('/doctors') : navigate('/doctors/Neurologue')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Neurologue</p>
+          <p onClick={()=>speciality === 'Gastro-entérologue'? navigate('/doctors') : navigate('/doctors/Gastro-entérologue')} className='mb-2 p-2 border border-gray-600 rounded-3xl text-center hover:cursor-pointer hover:bg-gray-200'>Gastro-entérologue</p>
   
         </div>
         <div className='w-full grid [grid-template-columns:repeat(auto-fill,_minmax(200px,_1fr))] gap-4 gap-y-6'>
