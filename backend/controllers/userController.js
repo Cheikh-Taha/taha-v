@@ -74,6 +74,7 @@ export const generateReceipt = async (req, res) => {
     doc.text(`Date : ${appointment.slotDate}`)
     doc.text(`Heure : ${appointment.slotTime}`)
     doc.text(`Montant : ${appointment.amount} DH`)
+    doc.text(`Rendez-vous Id : ${appointment._id}`)
     doc.end()
   } catch (err) {
     console.log('Erreur PDF:', err); // <--- Ajoute ce log
