@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
 import appointmentModel from '../models/appointmentModel.js'
+import PDFDocument from 'pdfkit'
 
 
 // api to s'inscrire
@@ -45,6 +46,39 @@ const registerUser = async (req, res) => {
         console.log(error)
         res.json({success:false,message:error.message})        
     }
+}
+//api to get pdf
+export const generateReceipt = async (req, res) => {
+  try {
+    const { appointmentId } = req.params
+    const appointment = await appointmentModel.findById(appointmentId).populate('userId').populate('docId')
+    if (!appointment) return res.status(404).send('Appointment not found')
+        console.log('Generating PDF for appointment:', appointmentId); // <--- Ajoute ce log
+    console.log('Appointment data:', appointment); // <--- Ajoute ce log
+    
+         console.log('user name' , appointment.userData.name); // <--- Ajoute ce log
+    console.log('user name' , appointment.docData.name);
+    const userName = appointment.userData.name || 'Inconnu';
+    const docName = appointment.docData.name || 'Inconnu';
+
+    res.setHeader('Content-Type', 'application/pdf')
+    res.setHeader('Content-Disposition', 'attachment; filename=receipt.pdf')
+
+    const doc = new PDFDocument()
+    doc.pipe(res)
+
+    doc.fontSize(20).text('Reçu de Rendez-vous', { align: 'center' })
+    doc.moveDown()
+    doc.fontSize(14).text(`Patient : ${userName}`)
+    doc.text(`Médecin : ${docName}`)
+    doc.text(`Date : ${appointment.slotDate}`)
+    doc.text(`Heure : ${appointment.slotTime}`)
+    doc.text(`Montant : ${appointment.amount} DH`)
+    doc.end()
+  } catch (err) {
+    console.log('Erreur PDF:', err); // <--- Ajoute ce log
+    res.status(500).send('Erreur lors de la génération du PDF')
+  }
 }
 // api user to login
 const loginUser = async (req, res) => {

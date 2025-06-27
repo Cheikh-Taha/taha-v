@@ -96,6 +96,17 @@ const appointmentAdmin = async (req,res)=>{
         res.json({success:false,message:error.message})
     }
 }
+//api to delete doctor
+
+export const deleteDoctor = async (req, res) => {
+  try {
+    const { docId } = req.params; // <-- get from params, not body
+    await doctorModel.findByIdAndDelete(docId);
+    res.json({ success: true, message: "Doctor deleted" });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
 
 // API to cancel an appointment for admin
 const appointmentCancel = async (req, res) => {

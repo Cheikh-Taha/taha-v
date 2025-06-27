@@ -4,7 +4,7 @@ import { AdminContext } from '../../context/AdminContext'
 import { useEffect } from 'react'
 
 const DoctorList = () => {
-  const {doctors,aToken,getAllDoctors} = useContext(AdminContext)
+  const {doctors,aToken,getAllDoctors,deleteDoctor} = useContext(AdminContext)
 
   useEffect(()=>{
     if (aToken) {
@@ -29,6 +29,7 @@ const DoctorList = () => {
         <h2 className="text-white text-xl font-semibold">{item.name} </h2>
         <p className="text-white text-sm">{item.speciality} </p>
         <p className="text-white text-sm">{item.ville} </p>
+        <button  onClick={() => deleteDoctor(item._id)} className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:cursor-pointer bg-blue-500 text-white px-4 py-2 rounded mt-2'>supprimer</button>
 
       </div>
     </div>

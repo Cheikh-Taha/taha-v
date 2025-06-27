@@ -76,6 +76,23 @@ const AdminContextProvider = (props) => {
             toast.error(error.message)
         }
     }
+    // In AdminContext.jsx
+const deleteDoctor = async (doctorId) => {
+  try {
+    const { data } = await axios.delete(
+  backendUrl + `/api/admin/delete-doctor/${doctorId}`,
+  { headers: { token: aToken } }
+);
+    if (data.success) {
+      toast.success('Doctor deleted');
+      getAllDoctors(); // Refresh the list
+    } else {
+      toast.error(data.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
     const value = {
         aToken, setAToken,
@@ -83,7 +100,8 @@ const AdminContextProvider = (props) => {
         appointments, getAllAppointment, setAppointments,
         cancelAppointment,
         getDashData, dashData,
-        slotDateFormat
+        slotDateFormat,
+        deleteDoctor
     }
 
     return (

@@ -13,11 +13,16 @@ const MyAppointment = () => {
 
   const months = ["Jan", "Fev", "Mar", "Avr", "Mai", "Jun", "Jul", "Aut", "Sep", "Oct", "Nov", "Dec"];
 
-  const slotDateFormat = (slotDate) => {
-    if (!slotDate) return '';
-    const dateArray = slotDate.split('_');
-    return dateArray[0] + ' ' + months[Number(dateArray[1]) - 1] + ' ' + dateArray[2];
-  };
+ function formatTimestamp(timestamp) {
+  const date = new Date(Number(timestamp));
+  // Example: "2025-07-27 14:21:20"
+  return date.getFullYear() + '-' +
+    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getDate()).padStart(2, '0') + ' ' +
+    String(date.getHours()).padStart(2, '0') + ':' +
+    String(date.getMinutes()).padStart(2, '0') + ':' +
+    String(date.getSeconds()).padStart(2, '0');
+}
 
 
   const getUserAppointments = async () => {
@@ -35,6 +40,26 @@ const MyAppointment = () => {
     }
 
   }
+
+  const handleGetReceipt = async (appointmentId) => {
+  try {
+    const response = await axios.get(
+      backEndUrl + `/api/user/receipt/${appointmentId}`,
+      {
+        headers: { token },
+        responseType: 'blob', // Important for binary data
+      }
+    );
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'receipt.pdf';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    //toast.error("Erreur lors du téléchargement du reçu");
+  }
+}
   const cancelAppointment = async (appointmentId) => {
     try {
       const { data } = await axios.post(backEndUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } });
@@ -90,12 +115,12 @@ const MyAppointment = () => {
               <p className='text-neutral-800 font-semibold'>{item.docData.name}</p>
               <p>{item.docData.speciality}</p>
               <p className='font-medium text-zinc-700 mt-1'>Address:</p>
-              <p className='text-xs'>{item.docData.address}</p>
-              <p className='text-xs mt-1'><span className='text-sm font-medium text-neutral-700'>Date & Time: </span>{slotDateFormat(item.slotDate)} | {item.slotTime}</p>
+              <p className='text-xs'>{item.docData.addresse}</p>
+              <p className='text-xs mt-1'><span className='text-sm font-medium text-neutral-700'>Date & Time: </span> {formatTimestamp(1750963280775)}</p>
             </div>
             <div></div>
             <div className='flex flex-col justify-end gap-2'>
-              <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-150 cursor-pointer'>Obtenir reçu</button>
+              <button onClick={() => handleGetReceipt(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-150 cursor-pointer'>Obtenir reçu</button>
               <button onClick={() => handleCancelClick(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-150 cursor-pointer'>Annuler la reservation</button>
             </div>
           </div>
